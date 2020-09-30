@@ -1,0 +1,79 @@
+﻿@model TechnoIsland_Bookstore.Models.Book
+
+<br />
+<h2 class="text-info">@(Model.Id!= 0? "Edit" : "Create") Book</h2>
+<br />
+<div class="border container" style="padding: 50px;">
+    <form enctype="multipart/form-data" method="post">
+        @if (Model.Id != 0)
+        {
+            <input type="hidden" asp-for="Id" />
+        }
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="Title"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="Author"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="Author" class="form-control" />
+                <span asp-validation-for="Author" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="Publisher"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="Publisher" class="form-control" />
+                <span asp-validation-for="Publisher" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="ImageFile" class="control-label"></label>
+            </div>
+            <div class="col-6">
+                <div class="custom-file">
+                    <input asp-for="ImageFile" class="custom-file-input" id="customFile" />
+                    <label class="custom-file-label" for="customFile">Choose File...</label>
+                    <span asp-validation-for="ImageFile" class="=text-danger"></span>
+
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-3 offset-3">
+                <button type="submit" class="btn btn-primary form-control">
+                    @(Model.Id!= 0? "Update" : "Create")
+                </button>
+            </div>
+            <div class="col-3">
+                <a asp-area="" asp-controller="Books" asp-action="Dashboard" class="btn btn-success form-control">Back to List</a>
+            </div>
+        </div>
+    </form>
+</div>
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.custom-file-input').on("change", function () {
+                var fileName = $(this).val().split("\\").pop();
+                $(this).siblings('.custom-file-label').addClass("selected").html(fileName);
+            })
+        });
+
+    </script>
+
+
+}
+
+

@@ -1,0 +1,45 @@
+﻿@model TechnoIsland_Bookstore.Models.Book
+
+@{
+    ViewBag.Title = "Borrow";
+
+}
+
+<div class="form-horizontal">
+    <h4>Book</h4>
+    <br />
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group">
+        <div class="col-md-2">
+            <label asp-for="Title"></label>
+            <input asp-for="Title" class="form-control" />
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+
+    </div>
+    <div class="form-group">
+        <div class="col-md-2">
+            <label asp-for="Author"></label>
+            <input asp-for="Author" class="form-control" />
+            <span asp-validation-for="Author" class="text-danger"></span>
+        </div>
+
+    </div>
+    <div class="form-group">
+        <div class="col-md-2">
+            <label asp-for="Publisher"></label>
+            <input asp-for="Publisher" class="form-control" />
+            <span asp-validation-for="Publisher" class="text-danger"></span>
+        </div>
+
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+
+        </div>
+    </div>
+
+</div>
+<div>
+    <a asp-area="" asp-controller="Books" asp-action="Index">Back to List</a>
+</div>
