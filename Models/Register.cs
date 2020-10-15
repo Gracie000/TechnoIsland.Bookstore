@@ -18,14 +18,13 @@ namespace TechnoIsland_Bookstore.Models
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "Password is required")]
         [DataType(DataType.Password)]
-        [MinLength(6, ErrorMessage = "Minimum 6 characters required")]
+        [MinLength(8, ErrorMessage = "Minimum 8 characters required")]
         public string Password { get; set; }
 
-        [Required(ErrorMessage = "Please Enter the Confirm Password...")]
-        [NotMapped]
+        [Required(ErrorMessage = "Please Enter Confirm Password...")]
         [DataType(DataType.Password)]
         [Display(Name = "Confirm Password")]
-        [Compare("Password")]
+        [Compare("Password", ErrorMessage = "The password and confirmation password do not match")]
         public string ConfirmPassword { get; set; }
 
 

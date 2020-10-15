@@ -16,6 +16,8 @@ namespace TechnoIsland_Bookstore.Models
         public string MobileNumber { get; set; }
         
         [Required]
+        public string Name { get; set; }
+        [Required]
         public string Username { get; set; }
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "Password is required")]

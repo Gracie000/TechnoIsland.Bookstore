@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -17,7 +18,8 @@ namespace TechnoIsland_Bookstore.Controllers
         {
             _db = db;
         }
-        public IActionResult Index()
+        [AllowAnonymous]
+        public IActionResult Login()
         {
             return View();
 
@@ -25,6 +27,7 @@ namespace TechnoIsland_Bookstore.Controllers
 
 
         [HttpPost]
+        [AllowAnonymous]
         public  async Task<IActionResult> Login(LoginViewModel model)
         {
             if (ModelState.IsValid)
@@ -54,12 +57,12 @@ namespace TechnoIsland_Bookstore.Controllers
 
         }
         [HttpGet]
-        public IActionResult Registration()
+        public IActionResult Register()
         {
             return View();
         }
         [HttpPost]
-        public async Task<ActionResult> Registration(Register register)
+        public async Task<ActionResult> Register(Register register)
         {
 
             if (ModelState.IsValid)
@@ -78,7 +81,7 @@ namespace TechnoIsland_Bookstore.Controllers
             }
             else
             {
-                return View("Registration");
+                return View("Register");
             }
             return RedirectToAction("Index", "Account");
         }
